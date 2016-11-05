@@ -4,19 +4,16 @@ webpackConfig.module.loaders=[
     {
         test: /\.js$/, // .js
         loader: 'babel',
-        exclude: [/node_modules/, '/tests/*'],
+        exclude: [/node_modules/, '*/tests/*'],
         query: {
             presets: ['airbnb'],
-            plugins: ['istanbul']
+            plugins: ['transform-class-properties', 'istanbul']
         }
     },
     {
         test: /\.spec\.js$/, // .spec.js
         loader: 'babel',
-        exclude: /node_modules/,
-        query: {
-            presets: ['airbnb']
-        }
+        exclude: /node_modules/
     }
 ];
 module.exports = function (config) {
@@ -24,12 +21,12 @@ module.exports = function (config) {
         basePath: '',
         frameworks: ['jasmine'],
         files: [
-            'tests/**/*.spec.js'
+            'src/tests/**/*.spec.js'
         ],
 
         preprocessors: {
             // add webpack as preprocessor
-            'test/**/*.spec.js': ['webpack']
+            'src/tests/**/*.spec.js': ['webpack']
         },
 
         webpack: webpackConfig,
