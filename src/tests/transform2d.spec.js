@@ -11,5 +11,6 @@ describe('Transform2D', () => {
         const t = new Transform2D()
         expect(t.world2view(new Point2(1, 10))).toEqual(new Point2(1, 10))
         expect(t.world2view(new Point2(10, 1))).toEqual(new Point2(10, 1))
+        expect(t.world2viewScale(10)).toEqual(10)
     })
 })

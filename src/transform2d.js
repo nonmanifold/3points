@@ -9,4 +9,6 @@ export default class Transform2D {
         return new Point2(view.x, view.y)
     }
 
+    world2viewScale = (length) => length
+
 }
