@@ -1,4 +1,5 @@
 import Scene from '../scene'
+
 describe('Scene', () => {
 
     it('should delegate drawing to drawable', () => {

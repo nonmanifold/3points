@@ -1,5 +1,8 @@
 import Shape from '../shape'
 import { Point2 } from '../utils'
+import createMockCanvas from './mock-canvas'
+import Canvas from '../canvas'
+import Transform2D from '../transform2d'
 
 describe('Shape', () => {
     it('should have draw(canvas, transform)', () => {
@@ -33,5 +36,20 @@ describe('Shape', () => {
         expect(s.getParallelogramArea()).toBeCloseTo(1.0)
         expect(s.getCenterOfMass()).toEqual(new Point2(0.5, 0.5))
         expect(s.getCircleRadius()).toBeCloseTo(Math.sqrt(1.0 / Math.PI))
+    })
+
+    it('should call methods of canvas wrapper when draw()', () => {
+        const s = new Shape()
+        expect(s.getParallelogramArea()).toBeCloseTo(0.0)
+        s.addPoint(new Point2(0, 0))
+        s.addPoint(new Point2(0, 1))
+        s.addPoint(new Point2(1, 1))
+        const { canvas, ctx } = createMockCanvas()
+        const c = new Canvas(canvas)
+        spyOn(c, 'poly')
+        spyOn(c, 'circle')
+        s.draw(c, new Transform2D())
+        expect(c.poly).toHaveBeenCalled()
+        expect(c.circle).toHaveBeenCalled()
     })
 })

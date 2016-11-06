@@ -7,7 +7,8 @@ module.exports = {
         filename: "bundle.js"
     },
     watch: true,
-    devtool: 'inline-source-map', //just do inline source maps instead of the default
+    //  devtool: 'inline-source-map', //just do inline source maps instead of the default
+    devtool: false,
     module: {
         loaders: [
             {

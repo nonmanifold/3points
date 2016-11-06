@@ -1,6 +1,6 @@
 var path = require('path');
-const webpackConfig=require('./webpack.config');
-webpackConfig.module.loaders=[
+const webpackConfig = require('./webpack.config');
+webpackConfig.module.loaders = [
     {
         test: /\.js$/, // .js
         loader: 'babel',
@@ -11,7 +11,8 @@ webpackConfig.module.loaders=[
         }
     },
     {
-        test: /\.spec\.js$/, // .spec.js
+        test: [/\.spec\.js$/, /\.js$/], // .spec.js & .js
+        include: [/tests/],
         loader: 'babel',
         exclude: /node_modules/
     }
