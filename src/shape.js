@@ -17,6 +17,13 @@ export  default class Shape {
     parallelogramArea = 0.0
     circleRadius = 0.0
 
+    clear = () => {
+        this.points.length = 0
+        this.centerOfMass = null
+        this.parallelogramArea = 0.0
+        this.circleRadius = 0.0
+    }
+
     addPoint = (p) => {
         if (this.points.length < 3) {
             this.points.push(p)
@@ -63,8 +70,9 @@ export  default class Shape {
         }
 
         canvas.poly(this.points, transform.world2view, COLOR_BLUE)
-
-        canvas.circle(transform.world2view(this.centerOfMass), transform.world2viewScale(this.circleRadius), COLOR_YELLOW)
+        if (this.points.length > 3) {
+            canvas.circle(transform.world2view(this.centerOfMass), transform.world2viewScale(this.circleRadius), COLOR_YELLOW)
+        }
     }
 
     getIdxAt = (p) => {

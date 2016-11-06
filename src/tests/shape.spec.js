@@ -82,4 +82,16 @@ describe('Shape', () => {
         expect(s.getCenterOfMass()).toEqual(new Point2(45, 50))
         expect(s.getCircleRadius()).toBeCloseTo(Math.sqrt(100.0 / Math.PI))
     })
+
+    it('allow to clear() and then be re-rendered successfully', () => {
+        const s = new Shape()
+        s.addPoint(new Point2(0, 0))
+        s.addPoint(new Point2(0, 10))
+        s.addPoint(new Point2(100, 100))
+        s.clear()
+        const { canvas, ctx } = createMockCanvas()
+        const c = new Canvas(canvas)
+        s.draw(c, new Transform2D())
+        expect(s.getParallelogramArea()).toBeCloseTo(0.0)
+    })
 })
