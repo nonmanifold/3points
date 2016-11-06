@@ -8,7 +8,8 @@ export default function createMockCanvas (width = 100, height = 100) {
         stroke: jasmine.createSpy('stroke'),
         moveTo: jasmine.createSpy('moveTo'),
         lineTo: jasmine.createSpy('lineTo'),
-        closePath: jasmine.createSpy('closePath')
+        closePath: jasmine.createSpy('closePath'),
+        fillText: jasmine.createSpy('fillText')
     }
 
     const mockCanvas = {

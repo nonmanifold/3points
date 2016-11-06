@@ -68,14 +68,19 @@ export  default class Shape {
     }
 
     draw = (canvas, transform) => {
+        const info=[]
         for (let i = 0; i < Math.min(3, this.points.length); i ++) {
             canvas.circle(transform.world2view(this.points[i]), RADIUS, COLOR_RED)
+            info.push(`${i} ${this.points[i].x}, ${this.points[i].y}`)
         }
 
         canvas.poly(this.points, transform.world2view, COLOR_BLUE)
         if (this.points.length > 3) {
             canvas.circle(transform.world2view(this.centerOfMass), transform.world2viewScale(this.circleRadius), COLOR_YELLOW)
+            info.push(`parallelogram area ${this.parallelogramArea}`)
+            info.push(`circle area ${this.parallelogramArea}`)
         }
+        canvas.text(info)
     }
 
     getIdxAt = (p) => {

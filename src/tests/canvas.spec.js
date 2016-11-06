@@ -29,9 +29,15 @@ describe('Canvas', () => {
     it('Should draw polygons', () => {
         const { canvas, ctx } = createMockCanvas()
         const c = new Canvas(canvas)
-        c.poly([new Point2(0, 0), new Point2(10, 10), new Point2(- 10, 10)], (p) => p, 'rgb(0,0,255)'
-        )
+        c.poly([new Point2(0, 0), new Point2(10, 10), new Point2(- 10, 10)], (p) => p, 'rgb(0,0,255)')
         expect(ctx.strokeStyle).toBe('rgb(0,0,255)')
         expect(ctx.lineWidth).toBe(1)
+    })
+
+    it('Should draw multiline text', () => {
+        const { canvas, ctx } = createMockCanvas()
+        const c = new Canvas(canvas)
+        c.text(['text'])
+        expect(ctx.fillText).toHaveBeenCalledWith('text', 0, 12)
     })
 })

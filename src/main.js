@@ -16,9 +16,6 @@ function main () {
     const canvas = new Canvas(canvasElm)
 
     const shape = new Shape()
-    shape.addPoint(new Point2(10, 50))
-    shape.addPoint(new Point2(10, 300))
-    shape.addPoint(new Point2(300, 100))
 
     const view = new Viewport(shape, canvas, new Transform2D())
     const render = new Renderer(view)

@@ -1,4 +1,8 @@
+import { Point2 } from './utils'
 const PI2 = Math.PI * 2.0
+const LINE_HEIGHT = 12
+const DEFAULT_ORIGIN = new Point2(0, LINE_HEIGHT)
+
 export default class Canvas {
     constructor (canvasElm) {
         this.canvas = canvasElm
@@ -50,4 +54,12 @@ export default class Canvas {
         ctx.restore()
     }
 
+    text = (lines, origin = DEFAULT_ORIGIN) => {
+        const ctx = this.ctx
+        ctx.save()
+        for (let i = 0; i < lines.length; i ++) {
+            ctx.fillText(lines[i], origin.x, origin.y + (i * LINE_HEIGHT))
+        }
+        ctx.restore()
+    }
 }

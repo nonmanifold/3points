@@ -21,9 +21,9 @@ export  default class Viewport {
     mousedown = (e) => {
         const p = this.transform.view2world(getLocalMouse(e))
         const idx = this.scene.getIdxAt(p)
-        if (idx >= 0) {
-            this.dragItemId = idx
-        }
+
+        this.dragItemId = idx
+
         this.canvas.canvas.addEventListener('mousemove', this.mousemove)
     }
 

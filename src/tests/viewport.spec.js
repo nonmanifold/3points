@@ -12,6 +12,8 @@ describe('viewport', () => {
             clear,
             poly: () => {
             },
+            text: () => {
+            },
             canvas: {
                 addEventListener: () => {
                 }
