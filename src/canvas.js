@@ -1,12 +1,7 @@
-import { debug } from './utils'
 const PI2 = Math.PI * 2.0
 export default class Canvas {
     constructor (canvasElm) {
         this.canvas = canvasElm
-        if (this.canvas.getContext == undefined) {
-            debug('unsupported browser')
-            return
-        }
         this.ctx = this.canvas.getContext('2d')
 
         this.setDimensions(this.canvas.width, this.canvas.height)
@@ -41,8 +36,9 @@ export default class Canvas {
         ctx.beginPath()
         const start = transformFn(points[0])
         ctx.moveTo(start.x, start.y)
+        let pView
         for (let i = 1; i < points.length; i ++) {
-            let pView = transformFn(points[i])
+            pView = transformFn(points[i])
             ctx.lineTo(pView.x, pView.y)
         }
         ctx.closePath()
