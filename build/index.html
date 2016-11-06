@@ -4,17 +4,24 @@
     <meta charset="UTF-8">
     <title>3 points</title>
     <style type="text/css">
+        html, body {
+            width:  100%;
+            height: 100%;
+            margin: 0;
+        }
         * {
             padding: 0;
             margin: 0;
         }
 
         canvas {
-            padding: 0;
-            margin: 0;
+            position: absolute;
+            width: 100%;
+            height: 100%;
         }
 
         #fps {
+            position: absolute;
             z-index: 1;
         }
 
@@ -22,7 +29,7 @@
 </head>
 <body>
 <div id="fps"></div>
-<canvas id="canvas" width="512" height="512">Unsupported browser. :(</canvas>
+<canvas id="canvas">Unsupported browser. :(</canvas>
 <script src="bundle.js" type="application/javascript"></script>
 </body>
 </html>

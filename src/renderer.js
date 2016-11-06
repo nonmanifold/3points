@@ -1,12 +1,10 @@
 const FPS = 70.0
-const FRAME_DURATION = 1000.0 / FPS
 
 export  default class Renderer {
     frame_count = 0
     fps_timer = null
     fps = null
     updateId = null
-    previousDelta = 0
 
     constructor (viewport) {
         this.viewport = viewport
@@ -22,16 +20,8 @@ export  default class Renderer {
     processFrame = (currentDelta) => {
         this.updateId = window.requestAnimationFrame(this.processFrame)
 
-        const delta = currentDelta - this.previousDelta
-
-        if (delta < FRAME_DURATION) {
-            return // drop frame
-        }
-
         this.viewport.render()
         this.frame_count ++
-
-        this.previousDelta = currentDelta
     }
 
 

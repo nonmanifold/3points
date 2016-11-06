@@ -8,8 +8,13 @@ export default class Canvas {
             return
         }
         this.ctx = this.canvas.getContext('2d')
-        this.w = this.canvas.width
-        this.h = this.canvas.height
+
+        this.setDimensions(this.canvas.width, this.canvas.height)
+    }
+
+    setDimensions = (width, height) => {
+        this.w = width
+        this.h = height
     }
 
     clear = () => {
