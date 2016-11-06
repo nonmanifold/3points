@@ -1,8 +1,21 @@
 export default class Scene {
     items = []
-    draw = (canvas) => {
+
+    add = (drawable) => {
+        this.items.push(drawable)
+    }
+
+    each = (callback) => {
         for (let i = 0; i < this.items.length; i ++) {
-            this.items[i].draw(canvas)
+            if (callback(this.items[i])) {
+                return;
+            }
         }
+    }
+
+    draw = (canvas) => {
+        this.each((item) => {
+            item.draw(canvas)
+        })
     }
 }
