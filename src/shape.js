@@ -1,9 +1,13 @@
+import { Point2 } from './utils'
 export  default class Shape {
     points = []
 
     addPoint = (p) => {
         if (this.points.length < 3) {
             this.points.push(p)
+            if (this.points.length === 3) {
+                this.setFourthPoint()
+            }
         }
     }
 
@@ -21,5 +25,13 @@ export  default class Shape {
 
     draw = (canvas, transform) => {
 
+    }
+
+    setFourthPoint = () => {
+        const A = this.points[0]
+        const B = this.points[1]
+        const C = this.points[2]
+        const BA = new Point2(B.x - A.x, B.y - A.y)
+        this.points[3] = new Point2(C.x - BA.x, C.y - BA.y)
     }
 }
