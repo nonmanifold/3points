@@ -5,8 +5,8 @@ export function debug (args) {
 }
 
 export function Point2 (x, y) {
-    this.x = parseInt(x)
-    this.y = parseInt(y)
+    this.x = x
+    this.y = y
 }
 
 export function getLocalMouse (e) {
