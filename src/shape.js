@@ -53,6 +53,9 @@ export  default class Shape {
     }
 
     setFourthPoint = () => {
+        if (this.points.length < 3) {
+            return
+        }
         const A = this.points[0]
         const B = this.points[1]
         const C = this.points[2]

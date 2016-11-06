@@ -30,7 +30,9 @@ export  default class Viewport {
     mouseup = (e) => {
         const p = this.transform.view2world(getLocalMouse(e))
         this.removeMouseTracking()
-        this.scene.addPoint(p)
+        if (this.dragItemId === - 1) {
+            this.scene.addPoint(p)
+        }
     }
 
     mousemove = (e) => {

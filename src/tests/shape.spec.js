@@ -68,6 +68,7 @@ describe('Shape', () => {
     it('should be able to update knobs by index with new value and re-calculate shape', () => {
         const s = new Shape()
         s.addPoint(new Point2(0, 0))
+        s.move(0, new Point2(0, 0))
         s.addPoint(new Point2(0, 10))
         s.addPoint(new Point2(100, 100))
 
