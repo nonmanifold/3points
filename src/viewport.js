@@ -1,5 +1,3 @@
-import Scene from './scene'
-
 export  default class Viewport {
 
     constructor (scene, canvas, transform) {

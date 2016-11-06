@@ -3,10 +3,16 @@ import { Point2 } from './utils'
 const COLOR_RED = 'rgb(255,0,0)'
 const COLOR_BLUE = 'rgb(0,0,255)'
 const COLOR_YELLOW = 'rgb(255,255,0)'
+const RADIUS = 11.0
+const RADIUS_SQUARED = RADIUS * RADIUS
+
+const pointsAreNear = (a, b, tolerance) => {
+    return ((a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y)) < tolerance
+}
 
 export  default class Shape {
 
-    points = [] // I wish these to be private fields, but for simplicity lets leave it as a public property
+    points = [] // I wish these were private fields, but for simplicity lets leave them as a public properties
     centerOfMass = null
     parallelogramArea = 0.0
     circleRadius = 0.0
@@ -32,6 +38,13 @@ export  default class Shape {
         }
     }
 
+    move = (pointIdx, newPlace) => {
+        if (! (pointIdx < 0 || pointIdx >= Math.min(3, this.points.length) - 1)) {
+            this.points[pointIdx] = newPlace
+            this.setFourthPoint()
+        }
+    }
+
     setFourthPoint = () => {
         const A = this.points[0]
         const B = this.points[1]
@@ -46,12 +59,21 @@ export  default class Shape {
 
     draw = (canvas, transform) => {
         for (let i = 0; i < Math.min(3, this.points.length); i ++) {
-            canvas.circle(transform.world2view(this.points[i]), 11, COLOR_RED)
+            canvas.circle(transform.world2view(this.points[i]), RADIUS, COLOR_RED)
         }
 
         canvas.poly(this.points, transform.world2view, COLOR_BLUE)
 
         canvas.circle(transform.world2view(this.centerOfMass), transform.world2viewScale(this.circleRadius), COLOR_YELLOW)
+    }
+
+    getIdxAt = (p) => {
+        for (let i = 0; i < Math.min(3, this.points.length); i ++) {
+            if (pointsAreNear(p, this.points[i], RADIUS_SQUARED)) {
+                return i
+            }
+        }
+        return - 1
     }
 
     getCenterOfMass = () => this.centerOfMass

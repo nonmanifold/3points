@@ -52,4 +52,34 @@ describe('Shape', () => {
         expect(c.poly).toHaveBeenCalled()
         expect(c.circle).toHaveBeenCalled()
     })
+
+    it('should be able to tell which of knobs we hit', () => {
+        const s = new Shape()
+        s.addPoint(new Point2(0, 0))
+        s.addPoint(new Point2(0, 10))
+        s.addPoint(new Point2(100, 100))
+
+        expect(s.getIdxAt(new Point2(0, 0))).toBe(0)
+        expect(s.getIdxAt(new Point2(- 5, - 5))).toBe(0)
+        expect(s.getIdxAt(new Point2(0, 12))).toBe(1)
+        expect(s.getIdxAt(new Point2(1010, 0))).toBe(- 1)
+    })
+
+    it('should be able to update knobs by index with new value and re-calculate shape', () => {
+        const s = new Shape()
+        s.addPoint(new Point2(0, 0))
+        s.addPoint(new Point2(0, 10))
+        s.addPoint(new Point2(100, 100))
+
+        expect(s.getParallelogramArea()).toBeCloseTo(1000.0)
+        expect(s.getCenterOfMass()).toEqual(new Point2(50, 50))
+        expect(s.getCircleRadius()).toBeCloseTo(Math.sqrt(1000.0 / Math.PI))
+
+        s.move(- 1, new Point2(- 10, 0))
+        s.move(0, new Point2(- 10, 0))
+
+        expect(s.getParallelogramArea()).toBeCloseTo(100.0)
+        expect(s.getCenterOfMass()).toEqual(new Point2(45, 50))
+        expect(s.getCircleRadius()).toBeCloseTo(Math.sqrt(100.0 / Math.PI))
+    })
 })

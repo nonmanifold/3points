@@ -10,7 +10,7 @@ export  default class Renderer {
         this.processFrame()
     }
 
-    processFrame = (currentDelta) => {
+    processFrame = () => {
         this.updateId = window.requestAnimationFrame(this.processFrame)
 
         this.viewport.render()
