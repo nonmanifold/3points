@@ -5,8 +5,9 @@ describe('Scene', () => {
         const s = new Scene()
         const draw = jasmine.createSpy('drawable')
         const canvas = {}
+        const transform = {}
         s.add({ draw })
-        s.draw(canvas)
-        expect(draw).toHaveBeenCalledWith(canvas)
+        s.draw(canvas, transform)
+        expect(draw).toHaveBeenCalledWith(canvas, transform)
     })
 })

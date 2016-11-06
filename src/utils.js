@@ -4,7 +4,7 @@ export function debug (args) {
     }
 }
 
-export function Point (x, y) {
+export function Point2 (x, y) {
     this.x = parseInt(x)
     this.y = parseInt(y)
 }
@@ -12,13 +12,13 @@ export function Point (x, y) {
 export function getLocalMouse (e) {
     if (e.touches != undefined && e.touches[0] != undefined) {
         const touch = e.touches[0]
-        return new Point(touch.pageX, touch.pageY)
+        return new Point2(touch.pageX, touch.pageY)
     }
     if (e.offsetX) {
-        return new Point(e.offsetX, e.offsetY)
+        return new Point2(e.offsetX, e.offsetY)
     } else if (e.layerX) {
-        return new Point(e.layerX, e.layerY)
+        return new Point2(e.layerX, e.layerY)
     } else {
-        return new Point(- 1, - 1)
+        return new Point2(- 1, - 1)
     }
 }

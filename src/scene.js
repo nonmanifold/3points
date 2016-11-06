@@ -13,9 +13,9 @@ export default class Scene {
         }
     }
 
-    draw = (canvas) => {
+    draw = (canvas, transform) => {
         this.each((item) => {
-            item.draw(canvas)
+            item.draw(canvas, transform)
         })
     }
 }

@@ -1,13 +1,15 @@
 import Scene from './scene'
+
 export  default class Viewport {
 
-    constructor (canvas) {
+    constructor (scene, canvas, transform) {
         this.canvas = canvas
-        this.scene = new Scene()
+        this.transform = transform
+        this.scene = scene
     }
 
     render = () => {
         this.canvas.clear();
-        this.scene.draw(this.canvas)
+        this.scene.draw(this.canvas, this.transform)
     }
 }
