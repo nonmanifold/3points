@@ -7,7 +7,7 @@ export  default class Viewport {
     }
 
     render = () => {
-        this.canvas.ctx.clearRect(0, 0, this.canvas.w, this.canvas.h);
+        this.canvas.clear();
         this.scene.draw(this.canvas)
     }
 }
