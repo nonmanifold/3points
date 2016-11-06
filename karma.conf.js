@@ -4,7 +4,7 @@ webpackConfig.module.loaders=[
     {
         test: /\.js$/, // .js
         loader: 'babel',
-        exclude: [/node_modules/, '*/tests/*'],
+        exclude: [/node_modules/, /\.spec\.js$/],
         query: {
             presets: ['airbnb'],
             plugins: ['transform-class-properties', 'istanbul']
