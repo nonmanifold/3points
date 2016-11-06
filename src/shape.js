@@ -46,7 +46,7 @@ export  default class Shape {
     }
 
     move = (pointIdx, newPlace) => {
-        if (! (pointIdx < 0 || pointIdx >= Math.min(3, this.points.length) - 1)) {
+        if (! (pointIdx < 0 || pointIdx > this.points.length - 1)) {
             this.points[pointIdx] = newPlace
             this.setFourthPoint()
         }

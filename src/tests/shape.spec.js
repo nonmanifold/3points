@@ -81,6 +81,13 @@ describe('Shape', () => {
         expect(s.getParallelogramArea()).toBeCloseTo(100.0)
         expect(s.getCenterOfMass()).toEqual(new Point2(45, 50))
         expect(s.getCircleRadius()).toBeCloseTo(Math.sqrt(100.0 / Math.PI))
+
+        s.move(2, new Point2(- 1000, 10))
+
+
+        expect(s.getParallelogramArea()).toBeCloseTo(10000.0)
+        expect(s.getCenterOfMass()).toEqual(new Point2(- 505, 5))
+        expect(s.getCircleRadius()).toBeCloseTo(Math.sqrt(10000.0 / Math.PI))
     })
 
     it('allow to clear() and then be re-rendered successfully', () => {
