@@ -38,6 +38,6 @@ describe('Canvas', () => {
         const { canvas, ctx } = createMockCanvas()
         const c = new Canvas(canvas)
         c.text(['text'])
-        expect(ctx.fillText).toHaveBeenCalledWith('text', 0, 12)
+        expect(ctx.fillText).toHaveBeenCalledWith('text', 0, 13)
     })
 })

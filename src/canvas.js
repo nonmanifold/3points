@@ -1,6 +1,6 @@
 import { Point2 } from './utils'
 const PI2 = Math.PI * 2.0
-const LINE_HEIGHT = 12
+const LINE_HEIGHT = 13
 const DEFAULT_ORIGIN = new Point2(0, LINE_HEIGHT)
 
 export default class Canvas {
