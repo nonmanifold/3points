@@ -32,5 +32,11 @@ function main () {
     document.getElementById('reset').addEventListener('click', () => {
         shape.clear()
     })
+
+    document.getElementById('about').addEventListener('click', () => {
+        const infoBlock = document.getElementById('about-info')
+        infoBlock.style.display = infoBlock.style.display === 'block' ? 'none' : 'block'
+    })
+
 }
 main()

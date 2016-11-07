@@ -20,7 +20,9 @@
             width: 100%;
             height: 100%;
         }
-
+        p{
+            text-align: left;
+        }
         #controls {
             position: absolute;
             text-align: right;
@@ -28,13 +30,33 @@
             top: 0;
             z-index: 1;
         }
-
+        #about-info{
+            background: rgba(0,0,0,0.12);
+            box-shadow: rgba(0,0,0,0.12) 0 0 15px;
+            padding: 2em;
+        }
+        .signature{
+            text-align: right;
+        }
     </style>
 </head>
 <body>
 <div id="controls">
     <button id="reset">Reset</button>
     <button id="about">About</button>
+    <div id="about-info" style="display: none;">
+        <h3>Three points on the plane, a parallelogram and a circle.</h3>
+        <p>Small demo that shows how HTML5 canvas might be used to create interactive web application. Demo allows creation and drawing of related shapes: a parallelogram and a circle.</p>
+        <p>Click to enter three points. Theirs positions will be used to create a blue parallelogram. Yellow circle will be placed at parallelogram's diagonals intersection, and will maintain the same area as the parallelogram.<br/>
+        Drag red handles to move three corner points around and notice, how shapes react to your input.<br/>
+        Click "Reset" to start over.</p>
+        <p>Application has several unit tests for its logic parts and was also tested for stability by a 5y.o. boy.</p>
+        <p>To hide this message, click "about" again.</p>
+        <br/>
+        <br/>
+        <p class="signature">Author: Nick Serebrennikov</p>
+
+    </div>
 </div>
 <canvas id="canvas">Unsupported browser. :(</canvas>
 <script src="bundle.js" type="application/javascript"></script>
